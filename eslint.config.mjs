@@ -12,13 +12,13 @@ export default [
     ignores: [
       'node_modules/**',
       'dist/**',
-      'back/dist/**',
+      'api/dist/**',
       'build/**',
       '.github/**',
       '*.md',
       '*.sql',
+      '**/*.d.ts',
       'package-lock.json',
-      'front/.next/**',
       '.idea/**',
       '.husky/**',
     ],
@@ -55,50 +55,9 @@ export default [
     },
   },
 
-  // Backend (API / Node)
-  {
-    files: ['back/**/*.{js,ts,tsx}'],
-    languageOptions: {
-      globals: {
-        exports: 'readonly',
-        require: 'readonly',
-        process: 'readonly',
-        __dirname: 'readonly',
-        __filename: 'readonly',
-      },
-    },
-    rules: {
-      'no-process-exit': 'off',
-    },
-  },
-
-  // Tests Jest du back
-  {
-    files: [
-      'back/**/__tests__/**/*.{js,ts,tsx}',
-      'back/**/*.test.{js,ts,tsx}',
-      'back/**/*.spec.{js,ts,tsx}',
-    ],
-    languageOptions: {
-      globals: {
-        jest: 'readonly',
-        describe: 'readonly',
-        it: 'readonly',
-        test: 'readonly',
-        expect: 'readonly',
-        beforeEach: 'readonly',
-        beforeAll: 'readonly',
-        afterEach: 'readonly',
-        afterAll: 'readonly',
-        vi: 'readonly',
-        vitest: 'readonly',
-      },
-    },
-  },
-
   // Frontend (navigateur)
   {
-    files: ['front/**/*.{js,ts,tsx}'],
+    files: ['mobile/**/*.{js,ts,tsx}'],
     languageOptions: {
       globals: {
         document: 'readonly',
@@ -128,28 +87,11 @@ export default [
 
   // TypeScript strict, sélectionne le tsconfig selon le sous-dossier
   {
-    files: ['front/**/*.ts', 'front/**/*.tsx'],
+    files: ['mobile/**/*.ts', 'mobile/**/*.tsx'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ['./front/tsconfig.json'],
-        tsconfigRootDir: process.cwd(),
-        ecmaVersion: 2022,
-        sourceType: 'module',
-      },
-    },
-    plugins: { '@typescript-eslint': tseslint },
-    rules: {
-      ...tseslint.configs.recommended.rules,
-    },
-  },
-
-  {
-    files: ['back/**/*.ts', 'back/**/*.tsx'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        project: ['./back/tsconfig.json'],
+        project: ['./mobile/tsconfig.json'],
         tsconfigRootDir: process.cwd(),
         ecmaVersion: 2022,
         sourceType: 'module',

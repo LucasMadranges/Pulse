@@ -11,12 +11,19 @@
     "url": "git+https://github.com/LucasMadranges/Pulse.git"
   },
   "workspaces": [
-    "mobile"
+    "mobile",
+    "api"
   ],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "*.{js,mjs,cjs,jsx,ts,tsx}": [
+      "npm run lint",
+      "npm run format"
+    ],
+    "*.{json,md,css,scss,html,yml,yaml,graphql,mdx}": [
+      "npm run format"
+    ],
+    "*.go": [
+      "gofmt -w"
     ]
   },
   "license": "ISC",
