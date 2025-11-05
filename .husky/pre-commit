@@ -1,1 +1,5 @@
+echo "🔧 Linting JS/TS files..."
 npx lint-staged
+
+echo "🔧 Linting Go files..."
+./api/scripts/lint-go.sh
