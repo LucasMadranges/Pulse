@@ -16,11 +16,11 @@
   ],
   "lint-staged": {
     "*.{js,mjs,cjs,jsx,ts,tsx}": [
-      "npm run lint",
-      "npm run format"
+      "eslint --fix --max-warnings=0",
+      "prettier --write"
     ],
     "*.{json,md,css,scss,html,yml,yaml,graphql,mdx}": [
-      "npm run format"
+      "prettier --write"
     ],
     "*.go": [
       "gofmt -w"
@@ -33,7 +33,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint --fix --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
