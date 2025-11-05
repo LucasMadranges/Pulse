@@ -12,7 +12,7 @@ updates:
       prefix: 'deps(npm)'
 
   - package-ecosystem: gomod
-    directory: /
+    directory: /api
     target-branch: develop
     schedule:
       interval: weekly
